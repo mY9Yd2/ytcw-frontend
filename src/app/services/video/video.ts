@@ -12,8 +12,8 @@ export class VideoService {
   private readonly apiUrl = environment.apiUrl;
   private readonly http = inject(HttpClient);
 
-  getVideos(): Observable<PaginationResponse<VideoResponse>> {
-    return this.http.get<PaginationResponse<VideoResponse>>(`${this.apiUrl}/api/v1/videos`, {
+  getVideos(page: number = 1): Observable<PaginationResponse<VideoResponse>> {
+    return this.http.get<PaginationResponse<VideoResponse>>(`${this.apiUrl}/api/v1/videos?page=${page}`, {
       mode: 'cors'
     })
   }

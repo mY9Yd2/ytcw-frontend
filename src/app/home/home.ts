@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { VideoService } from '../services/video/video';
 import { Observable } from 'rxjs';
 import { PaginationResponse } from '../interfaces/pagination';
@@ -14,12 +14,20 @@ import { DurationToMachineReadablePipe, DurationToPrettyPipe } from '../pipes/du
 })
 export class Home {
   videos$!: Observable<PaginationResponse<VideoResponse>>;
+  page = 1;
 
   private readonly videoService = inject(VideoService);
 
   constructor() {
-    effect(() => {
-      this.videos$ = this.videoService.getVideos();
-    });
+    this.loadChannels();
+  }
+
+  loadChannels() {
+    this.videos$ = this.videoService.getVideos(this.page);
+  }
+
+  goToPage(page: number) {
+    this.page = page;
+    this.loadChannels();
   }
 }

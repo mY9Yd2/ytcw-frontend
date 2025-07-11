@@ -12,8 +12,8 @@ export class ChannelService {
 private readonly apiUrl = environment.apiUrl;
   private readonly http = inject(HttpClient);
 
-  getChannels(): Observable<PaginationResponse<ChannelResponse>> {
-    return this.http.get<PaginationResponse<ChannelResponse>>(`${this.apiUrl}/api/v1/channels`, {
+  getChannels(page: number = 1): Observable<PaginationResponse<ChannelResponse>> {
+    return this.http.get<PaginationResponse<ChannelResponse>>(`${this.apiUrl}/api/v1/channels?page=${page}`, {
       mode: 'cors'
     })
   }
