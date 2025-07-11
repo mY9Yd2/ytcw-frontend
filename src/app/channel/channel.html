@@ -1,0 +1,19 @@
+<div class="container mt-3">
+    @if (channels$ | async; as channels) {
+    <div>
+        <p>Currently tracked channels:</p>
+        <ul class="ytcw-list-gap">
+            @for (channel of channels.data; track channel.id; let idx = $index) {
+            <li>
+                <a class="ytcw-text-blue-500" href="https://www.youtube.com/channel/{{ channel.channel_id }}" target="_blank"
+                    rel="noopener noreferrer">{{ channel.uploader_id }}</a>
+            </li>
+          }
+        </ul>
+    </div>
+    } @else {
+    <div class="text-center">
+        <p>There is nothing to see here.</p>
+    </div>
+    }
+</div>

@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
+.ytcw-bg-black {
+    background-color: black;
+}
+
+.ytcw-max-h-52 {
+    max-height: 14rem;
+}
+
+.ytcw-min-h-52 {
+    min-height: 14rem;
+}
+
+.ytcw-h-52 {
+    height: 14rem;
+}
+
+.ytcw-aspect-auto-4-3 {
+    aspect-ratio: auto 4 / 3;
+}
+
+.ytcw-object-contain {
+    object-fit: contain;
+}
+
+.ytcw-text-gray-400 {
+    color: rgb(156 163 175);
+}
+
+.ytcw-text-blue-500:hover {
+    color: rgb(59 130 246);
+}
+
+.ytcw-text-red-custom:hover {
+    color: #fc4141;
+}
+
+.ytcw-navbar-bg-color {
+    background-color: #1f1f1f;
+}
+
+.ytcw-list-gap li:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.ytcw-list-gap li:first-child {
+    margin-top: 1rem;
+}
+
+a:link,
+a:active,
+a:visited,
+a:hover,
+a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+.ytcw-visited-link:visited {
+    color: #7cbdff;
+    text-decoration: none;
+}
