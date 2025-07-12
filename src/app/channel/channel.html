@@ -1,36 +1,42 @@
 <div class="container mt-3">
-    @if (channels$ | async; as channels) {
-    <div>
-        <p>Currently tracked channels:</p>
-        <ul class="ytcw-list-gap">
-            @for (channel of channels.data; track channel.id; let idx = $index) {
-            <li>
-                <a class="ytcw-text-blue-500" href="https://www.youtube.com/channel/{{ channel.channel_id }}" target="_blank"
-                    rel="noopener noreferrer">{{ channel.uploader_id }}</a>
-            </li>
-          }
-        </ul>
+  @if (channels$ | async; as channels) {
+  @if (channels.data.length > 0) {
+  <div>
+    <p>Currently tracked channels:</p>
+    <ul class="ytcw-list-gap">
+      @for (channel of channels.data; track channel.id; let idx = $index) {
+      <li>
+        <a class="ytcw-text-blue-500" href="https://www.youtube.com/channel/{{ channel.channel_id }}" target="_blank"
+          rel="noopener noreferrer">{{ channel.uploader_id }}</a>
+      </li>
+      }
+    </ul>
 
-        <nav aria-label="Channel pagination" class="mt-3">
-          <ul class="pagination justify-content-center">
-            <li class="page-item" [class.disabled]="page === 1">
-              <button class="page-link" (click)="goToPage(page - 1)" [disabled]="page === 1">Previous</button>
-            </li>
+    <nav aria-label="Channel pagination" class="mt-3">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="page === 1">
+          <button class="page-link" (click)="goToPage(page - 1)" [disabled]="page === 1">Previous</button>
+        </li>
 
-            <li class="page-item" class="active">
-              <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
-            </li>
+        <li class="page-item" class="active">
+          <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
 
-            <li class="page-item" [class.disabled]="page === channels.pagination.total_pages">
-              <button class="page-link" (click)="goToPage(page + 1)"
-                [disabled]="page === channels.pagination.total_pages">Next</button>
-            </li>
-          </ul>
-        </nav>
-    </div>
-    } @else {
-    <div class="text-center">
-        <p>There is nothing to see here.</p>
-    </div>
-    }
+        <li class="page-item" [class.disabled]="page === channels.pagination.total_pages">
+          <button class="page-link" (click)="goToPage(page + 1)"
+            [disabled]="page === channels.pagination.total_pages">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  } @else {
+  <div class="text-center">
+    <p>There is nothing to see here.</p>
+  </div>
+  }
+  } @else {
+  <div class="text-center">
+    <p>Loading...</p>
+  </div>
+  }
 </div>
